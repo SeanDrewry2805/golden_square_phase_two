@@ -27,13 +27,13 @@ class TaskTracker():
         self.show_tasks()
         return text
     
-tracker=TaskTracker()
+# tracker=TaskTracker()
 
-tracker.add_task('Mow the lawn')
-tracker.add_task('Make lasagna')
-tracker.add_task('Do the laundry')
-tracker.add_task('Take out the recycling')
+# tracker.add_task('Mow the lawn')
+# tracker.add_task('Make lasagna')
+# tracker.add_task('Do the laundry')
+# tracker.add_task('Take out the recycling')
 
-tracker.show_tasks()
+# tracker.show_tasks()
 
-tracker.complete_task()
+# tracker.complete_task()
