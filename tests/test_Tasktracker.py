@@ -28,7 +28,7 @@ def test_show_tasks_format():
 
 def test_remove_task(monkeypatch):
     # will initlaise a tracker and add some items to the list
-    # will remove a task from the list and reutnr the list to prove it has gone
+    # will remove a task from the list and return the list to prove it has gone
     monkeypatch.setattr('builtins.input', lambda _ :"Mow the lawn")
     tracker = TaskTracker()
     tracker.tasks = []
@@ -40,7 +40,7 @@ def test_remove_task(monkeypatch):
 
 def test_remove_task_from_longer_list(monkeypatch):
     # will initlaise a tracker and add some items to the list
-    # will remove a task from the list and reutnr the list to prove it has gone
+    # will remove a task from the list and return the list to prove it has gone
     monkeypatch.setattr('builtins.input', lambda _ :"Mow the lawn")
     tracker = TaskTracker()
     tracker.tasks = []
