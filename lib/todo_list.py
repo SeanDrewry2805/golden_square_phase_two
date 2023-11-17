@@ -14,6 +14,11 @@ class TodoList:
         #   Adds the todo to the list of todos
         self.todos.append(todo)
 
+    def update_lists(self):
+        self.completed = [i for i in self.todos if i.complete == True]
+        sorted = [i for i in self.todos if i.complete == False]
+        self.todos = sorted
+
     def mark_complete(self):
         # Parameters:
         #   none
@@ -31,10 +36,7 @@ class TodoList:
         for task in self.todos:
             if text_input in task.task:
                 task.mark_complete()
-        self.completed = [i for i in self.todos if i.complete == True]
-        sorted = [i for i in self.todos if i.complete == False]
-        self.todos = sorted
-        
+        self.update_lists()
 
     def incomplete(self):
         # Returns:
@@ -59,7 +61,5 @@ class TodoList:
         #   Marks all todos as complete
         for i in self.todos:
             i.mark_complete()
-        self.completed = [i for i in self.todos if i.complete == True]
-        sorted = [i for i in self.todos if i.complete == False]
-        self.todos = sorted
+        self.update_lists()
         
