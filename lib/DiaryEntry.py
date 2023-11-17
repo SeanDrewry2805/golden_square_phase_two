@@ -2,8 +2,6 @@ import math
 
 class DiaryEntry:
 
-    already_read = ''
-
     def __init__(self, title, contents):
         # Parameters:
         #   title: string
@@ -16,13 +14,14 @@ class DiaryEntry:
         # Returns:
         #   A formatted diary entry, for example:
         #   "My Title: These are the contents"
-        return f"{self.title}: {self.contents}"
+        return f"{self.title}:\n{self.contents}"
 
     def count_words(self):
         # Returns:
         #   int: the number of words in the diary entry
-        list = self.contents.split(' ')
-        return len(list)
+        contents = self.contents.split(' ')
+        title = self.title.split(' ')
+        return len(contents) + len(title)
 
     def reading_time(self, wpm):
         # Parameters:
@@ -37,7 +36,7 @@ class DiaryEntry:
         time = round(length/wpm, 2)
         rounded_time = math.ceil(time * 100) / 100
         formatted_time = f'{rounded_time:.2f}'
-        return f'Estimated reading time: {formatted_time} minutes'
+        return rounded_time
 
     def reading_chunk(self, wpm, minutes):
         # Parameters
