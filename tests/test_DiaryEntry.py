@@ -17,37 +17,37 @@ def test_contents():
 def test_format():
     # when format() is called a string is returned in the correct format
     entry = DiaryEntry('My first entry', 'Today I am writing my first diary entry!')
-    assert entry.format() == 'My first entry: Today I am writing my first diary entry!'
+    assert entry.format() == 'My first entry:\nToday I am writing my first diary entry!'
 
 def test_count_words_equal_to_eight():
     # make sure count_words() returns the correct nuber of words in the diary rentry
     entry = DiaryEntry('My first entry', 'Today I am writing my first diary entry!')
-    assert entry.count_words() == 8
+    assert entry.count_words() == 11
 
-def test_count_words_equal_to_eight():
+def test_count_words_equal_to_twenty_five():
     # make sure count_words() returns the correct nuber of words in the diary rentry
     entry = DiaryEntry('My first entry', 'Today I am writing my first diary entry! I rode a bus this morning and got all my groceries for dinner, we are having Lasagna.')
-    assert entry.count_words() == 25
+    assert entry.count_words() == 28
 
 def test_reading_time_200():
     # when given a wpm this method outputs a reading time estimate for the contents with minutes rounded to 2 dp
     entry = DiaryEntry('My first entry', 'Today I am writing my first diary entry! I rode a bus this morning and got all my groceries for dinner, we are having Lasagna.')
-    assert entry.reading_time(200) == 'Estimated reading time: 0.15 minutes'
+    assert entry.reading_time(200) == 0.15
 
 def test_reading_time_267():
     # when given a wpm this method outputs a reading time estimate for the contents with minutes rounded to 2 dp
     entry = DiaryEntry('My first entry', 'Today I am writing my first diary entry! I rode a bus this morning and got all my groceries for dinner, we are having Lasagna.')
-    assert entry.reading_time(267) == 'Estimated reading time: 0.10 minutes'
+    assert entry.reading_time(267) == 0.10
 
 def test_reading_time_184():
     # when given a wpm this method outputs a reading time estimate for the contents with minutes rounded to 2 dp
     entry = DiaryEntry('My first entry', 'Today I am writing my first diary entry! I rode a bus this morning and got all my groceries for dinner, we are having Lasagna.')
-    assert entry.reading_time(183) == 'Estimated reading time: 0.15 minutes'
+    assert entry.reading_time(183) == 0.15
 
 def test_reading_chunk():
     # when called with wpm and minutes reading_chunk() will return the amount of contents readable in that time
     entry = DiaryEntry('My first entry', one_hundred_words)
-    assert entry.reading_chunk(200, 0.2) == 'My first entry: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nulla sed neque laoreet faucibus pretium vel augue. Aliquam porttitor velit nisi, a sodales purus mollis ac. Aenean feugiat venenatis fringilla. Sed quis facilisis dui. In hac'
+    assert entry.reading_chunk(200, 0.2) == 'My first entry:\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nulla sed neque laoreet faucibus pretium vel augue. Aliquam porttitor velit nisi, a sodales purus mollis ac. Aenean feugiat venenatis fringilla. Sed quis facilisis dui. In hac habitasse'
 
 def test_contents_read_stored():
     # after reading_chunk() is called, store the amount read in an attribute
@@ -59,11 +59,11 @@ def test_reading_chunk_repeat():
     # when called again for the same contents reading_chunk() will return the next section of contents not yet read
     entry = DiaryEntry('My first entry', one_hundred_words)
     entry.reading_chunk(200, 0.2)
-    assert entry.reading_chunk(200, 2) == 'habitasse platea dictumst. Curabitur id arcu nibh. Quisque a massa magna. Aliquam pulvinar semper enim sit amet pretium. Sed vitae libero nisl. Donec egestas iaculis lorem, id ullamcorper ipsum volutpat nec. Suspendisse potenti. Nam maximus porta rutrum. Curabitur ultrices eleifend nisi sit amet feugiat. Sed porta congue pulvinar. Curabitur congue diam urna. Donec eget felis a mauris efficitur mollis eget eget ipsum. Integer.'
+    assert entry.reading_chunk(200, 2) == 'platea dictumst. Curabitur id arcu nibh. Quisque a massa magna. Aliquam pulvinar semper enim sit amet pretium. Sed vitae libero nisl. Donec egestas iaculis lorem, id ullamcorper ipsum volutpat nec. Suspendisse potenti. Nam maximus porta rutrum. Curabitur ultrices eleifend nisi sit amet feugiat. Sed porta congue pulvinar. Curabitur congue diam urna. Donec eget felis a mauris efficitur mollis eget eget ipsum. Integer.'
 
 def test_reading_chunk_return_to_start():
     # when called again for the same contents reading_chunk() when the contents have already been read, return contents from the start 
     entry = DiaryEntry('My first entry', one_hundred_words)
     entry.reading_chunk(200, 0.2)
     entry.reading_chunk(200, 2)
-    assert entry.reading_chunk(200, 0.2) == 'My first entry: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nulla sed neque laoreet faucibus pretium vel augue. Aliquam porttitor velit nisi, a sodales purus mollis ac. Aenean feugiat venenatis fringilla. Sed quis facilisis dui. In hac'
+    assert entry.reading_chunk(200, 0.2) == 'My first entry:\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nulla sed neque laoreet faucibus pretium vel augue. Aliquam porttitor velit nisi, a sodales purus mollis ac. Aenean feugiat venenatis fringilla. Sed quis facilisis dui. In hac habitasse'
