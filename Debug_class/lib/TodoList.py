@@ -12,7 +12,7 @@ class TodoList:
         # Side-effects:
         #   Adds the todo to the list of todos
         pass
-      
+    
     def incomplete(self):
         # Returns:
         #   A list of Todo instances representing the todos that are not complete

@@ -11,8 +11,10 @@ class Todo:
         # Side-effects:
         #   Sets the task property
         #   Sets the complete property to False
-        pass
-
+        self.dict = {}
+        self.dict["task"] = task
+        self.dict["status"] = False
+        
     def mark_complete(self):
         # Returns:
         #   Nothing
